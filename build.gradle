@@ -4,6 +4,23 @@ apply plugin: 'groovy'
 sourceCompatibility = 1.8
 version = '1.0'
 
+buildscript {
+    repositories {
+        mavenCentral()
+        //Needed only for SNAPSHOT versions
+        //maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+    dependencies {
+        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.1.1'
+    }
+}
+
+apply plugin: "info.solidsoft.pitest"
+
+pitest {
+    targetClasses = ['com.tatianomnom.uselessinvaders.*']
+    outputFormats = ['XML', 'HTML']
+}
 
 repositories {
     mavenCentral()
