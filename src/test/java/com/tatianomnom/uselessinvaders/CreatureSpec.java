@@ -7,9 +7,6 @@ import org.junit.runner.RunWith;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Created by tatiana on 07.02.15.
- */
 @RunWith(JUnitParamsRunner.class)
 public class CreatureSpec {
 
