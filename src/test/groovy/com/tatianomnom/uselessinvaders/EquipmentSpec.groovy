@@ -55,5 +55,35 @@ class EquipmentSpec extends Specification {
         [agility: -10, strength: -5] | [agility: 100, strength: 20, intelligence: 0]
     }
 
+    def "Items are correctly added to inventory"() {
+        given:
+        Equipment equipment = new Equipment([:])
+        when:
+        hero.addToInventory(equipment)
+        then:
+        hero.getInventory().size() == 1
+    }
+
+    def "Equipped items are removed from inventory"() {
+        given:
+        Equipment equipment = new Equipment([:])
+        when:
+        hero.addToInventory(equipment)
+        hero.equip(equipment)
+        then:
+        hero.getInventory().isEmpty()
+    }
+
+    def "Unequipped items return back to inventory"() {
+        given:
+        Equipment equipment = new Equipment([:])
+        when:
+        hero.addToInventory(equipment)
+        hero.equip(equipment)
+        hero.unequip(equipment)
+        then:
+        hero.getInventory().size() == 1
+    }
+
 
 }

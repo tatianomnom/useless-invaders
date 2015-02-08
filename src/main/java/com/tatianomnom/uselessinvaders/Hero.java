@@ -24,12 +24,16 @@ public class Hero extends Creature {
 
     private Set<Equipment> inventory = new HashSet<>();
 
+    public Set<Equipment> getInventory() {
+        return inventory;
+    }
+
     public void addToInventory(Equipment equipment) {
         inventory.add(equipment);
     }
 
     public void equip(Equipment equipment) {
-        //remove from inventory first
+        inventory.remove(equipment);
         equippedItems.add(equipment);
         recalculateEquipmentStats();
     }
@@ -46,7 +50,7 @@ public class Hero extends Creature {
 
     public void unequip(Equipment equipment) {
         equippedItems.remove(equipment);
-        //and put back into inventory
+        inventory.add(equipment);
         recalculateEquipmentStats();
     }
 
