@@ -36,7 +36,7 @@ public class CreatureSpec {
     }
 
     @Test
-    @Parameters({"10|7|2|5", "100|30|40|100"})
+    @Parameters({"10|7|2|5", "100|30|31|100", "100|3|2|99", "100|30|30|100"})
     public void hpIsRestoredUpToMaxWhenHealed(int initialHp, int damage, int healing, int expectedHp) {
         Creature vlad = new Creature(initialHp);
         vlad.receiveDamage(damage);
